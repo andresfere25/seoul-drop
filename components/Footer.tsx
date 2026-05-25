@@ -11,6 +11,7 @@ const SHOP_LINKS = [
 ]
 
 const HELP_LINKS = [
+  { label: 'Sobre nosotros', href: '/sobre-nosotros' },
   { label: 'Cómo comprar', href: '/ayuda' },
   { label: 'Envíos y tiempos', href: '/envios' },
   { label: 'Devoluciones', href: '/devoluciones' },

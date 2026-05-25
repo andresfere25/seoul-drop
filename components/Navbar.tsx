@@ -8,7 +8,8 @@ const NAV_LINKS = [
   { href: '/tienda', label: 'Tienda' },
   { href: '/tienda?cat=kbeauty', label: 'K-Beauty' },
   { href: '/tienda?cat=kpop', label: 'K-Pop' },
-  { href: '/tienda?cat=snacks', label: 'Snacks' },
+  { href: '/sobre-nosotros', label: 'Nosotros' },
+  { href: '/pedido-especial', label: 'Pedido especial' },
 ]
 
 export default function Navbar() {
