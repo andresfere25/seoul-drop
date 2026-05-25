@@ -6,6 +6,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PromoBar from '@/components/PromoBar'
 import { PRODUCTS, CATEGORIES, formatCOP, type Category } from '@/lib/data'
+import { getProductImage } from '@/lib/images'
+import SmartImage from '@/components/SmartImage'
 
 const SORT_OPTIONS = [
   { value: 'relevance', label: 'Relevancia' },
@@ -139,7 +141,7 @@ export default function TiendaPage() {
               gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
               gap: '1.25rem',
             }}>
-              {filtered.map(product => (
+              {filtered.map((product, idx) => (
                 <Link key={product.id} href={`/producto/${product.slug}`} style={{ textDecoration: 'none' }}>
                   <div style={{
                     background: 'white',
@@ -154,6 +156,7 @@ export default function TiendaPage() {
                   >
                     <div style={{ background: product.gradient, height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                       <span style={{ fontSize: '12px', fontWeight: 700, color: 'rgba(0,0,0,0.18)', letterSpacing: '1px', textTransform: 'uppercase' }}>{product.brand}</span>
+                      <SmartImage src={getProductImage(product.category, idx)} alt={product.name} />
                       {product.badges[0] && (
                         <span style={{ position: 'absolute', top: '12px', left: '12px', background: product.badgeColor, color: 'white', padding: '4px 10px', borderRadius: '8px', fontSize: '11px', fontWeight: 700 }}>
                           {product.badges[0]}

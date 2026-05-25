@@ -43,3 +43,6 @@ next-env.d.ts
 # skills (installed locally via npx skills)
 .agents/
 skills-lock.json
+
+# dev logs
+dev-server.log

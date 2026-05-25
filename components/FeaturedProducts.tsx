@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import { ShoppingBag, Star, ArrowRight } from 'lucide-react'
 import { getFeaturedProducts, formatCOP } from '@/lib/data'
+import { getProductImage } from '@/lib/images'
+import SmartImage from './SmartImage'
 
 const PRODUCTS = getFeaturedProducts()
 
@@ -40,7 +42,7 @@ export default function FeaturedProducts() {
           gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
           gap: '1.5rem',
         }}>
-          {PRODUCTS.map((product) => (
+          {PRODUCTS.map((product, idx) => (
             <div key={product.id} style={{ position: 'relative' }}>
               <Link href={`/producto/${product.slug}`} style={{ textDecoration: 'none' }}>
                 <div style={{
@@ -74,6 +76,7 @@ export default function FeaturedProducts() {
                     <span style={{ fontSize: '12px', fontWeight: 700, color: 'rgba(0,0,0,0.2)', letterSpacing: '1px', textTransform: 'uppercase' }}>
                       {product.brand}
                     </span>
+                    <SmartImage src={getProductImage(product.category, idx)} alt={product.name} />
                     {product.badges[0] && (
                       <span style={{
                         position: 'absolute', top: '14px', left: '14px',

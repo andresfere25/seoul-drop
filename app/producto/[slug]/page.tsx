@@ -1,17 +1,23 @@
+'use client'
+import { use } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Star, ShoppingBag, ArrowLeft, ShieldCheck, Truck, RefreshCw, MessageCircle } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import PromoBar from '@/components/PromoBar'
-import { getProductBySlug, getRelatedProducts, formatCOP, CATEGORIES } from '@/lib/data'
+import { getProductBySlug, getRelatedProducts, formatCOP, CATEGORIES, PRODUCTS } from '@/lib/data'
+import { getProductImage } from '@/lib/images'
+import SmartImage from '@/components/SmartImage'
 
-export default function ProductoPage({ params }: { params: { slug: string } }) {
-  const product = getProductBySlug(params.slug)
+export default function ProductoPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
+  const product = getProductBySlug(slug)
   if (!product) notFound()
 
   const related = getRelatedProducts(product)
   const category = CATEGORIES.find(c => c.slug === product.category)
+  const productIndex = PRODUCTS.findIndex(p => p.id === product.id)
   const discount = product.originalPrice
     ? Math.round((1 - product.price / product.originalPrice) * 100)
     : null
@@ -50,6 +56,7 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
                 <span style={{ fontSize: '14px', fontWeight: 800, color: 'rgba(0,0,0,0.18)', letterSpacing: '2px', textTransform: 'uppercase' }}>
                   {product.brand}
                 </span>
+                <SmartImage src={getProductImage(product.category, productIndex, 900)} alt={product.name} />
                 {product.badges[0] && (
                   <span style={{ position: 'absolute', top: '20px', left: '20px', background: product.badgeColor, color: 'white', padding: '6px 14px', borderRadius: '10px', fontSize: '13px', fontWeight: 700 }}>
                     {product.badges[0]}
@@ -189,7 +196,7 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
                 También te puede gustar
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '1.25rem' }}>
-                {related.map(p => (
+                {related.map((p, ri) => (
                   <Link key={p.id} href={`/producto/${p.slug}`} style={{ textDecoration: 'none' }}>
                     <div style={{
                       background: 'white', border: '1.5px solid #F0ECE4', borderRadius: '18px', overflow: 'hidden',
@@ -198,8 +205,9 @@ export default function ProductoPage({ params }: { params: { slug: string } }) {
                       onMouseEnter={e => { const el = e.currentTarget as HTMLDivElement; el.style.transform = 'translateY(-4px)'; el.style.boxShadow = '0 10px 30px rgba(0,0,0,0.08)'; el.style.borderColor = '#FF6B9D' }}
                       onMouseLeave={e => { const el = e.currentTarget as HTMLDivElement; el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none'; el.style.borderColor = '#F0ECE4' }}
                     >
-                      <div style={{ background: p.gradient, height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ background: p.gradient, height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
                         <span style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(0,0,0,0.18)', letterSpacing: '1px', textTransform: 'uppercase' }}>{p.brand}</span>
+                        <SmartImage src={getProductImage(p.category, ri + 1)} alt={p.name} />
                       </div>
                       <div style={{ padding: '1rem' }}>
                         <p style={{ fontSize: '11px', color: '#FF6B9D', fontWeight: 700, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{p.brand}</p>
