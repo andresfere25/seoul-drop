@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ShoppingBag, User, Menu, X, Search } from 'lucide-react'
+import { useCart } from '@/lib/cart'
 
 const NAV_LINKS = [
   { href: '/tienda', label: 'Tienda' },
@@ -12,6 +13,7 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { count, open } = useCart()
 
   return (
     <header style={{
@@ -87,13 +89,14 @@ export default function Navbar() {
             <User size={20} strokeWidth={1.8} />
           </Link>
 
-          <Link href="/carrito" aria-label="Carrito" style={{
+          <button onClick={open} aria-label="Abrir carrito" style={{
+            position: 'relative',
             background: '#FF6B9D',
             color: 'white',
             display: 'flex', alignItems: 'center', gap: '6px',
             padding: '9px 16px',
             borderRadius: '10px',
-            textDecoration: 'none',
+            border: 'none', cursor: 'pointer',
             fontSize: '14px',
             fontWeight: 600,
             transition: 'opacity 0.18s',
@@ -103,7 +106,19 @@ export default function Navbar() {
           >
             <ShoppingBag size={16} strokeWidth={2} />
             <span className="btn-label">Carrito</span>
-          </Link>
+            {count > 0 && (
+              <span style={{
+                position: 'absolute', top: '-6px', right: '-6px',
+                background: '#1A1A1A', color: 'white',
+                minWidth: '20px', height: '20px', borderRadius: '100px',
+                fontSize: '11px', fontWeight: 700,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                padding: '0 5px', border: '2px solid #FAF7F2',
+              }}>
+                {count}
+              </span>
+            )}
+          </button>
 
           {/* Mobile menu button */}
           <button

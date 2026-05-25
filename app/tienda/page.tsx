@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import PromoBar from '@/components/PromoBar'
 import { PRODUCTS, CATEGORIES, formatCOP, type Category } from '@/lib/data'
 import { getProductImage } from '@/lib/images'
+import { useCart } from '@/lib/cart'
 import SmartImage from '@/components/SmartImage'
 
 const SORT_OPTIONS = [
@@ -18,6 +19,7 @@ const SORT_OPTIONS = [
 ]
 
 export default function TiendaPage() {
+  const { addItem } = useCart()
   const [activeCategory, setActiveCategory] = useState<Category | 'all'>('all')
   const [sort, setSort] = useState('relevance')
   const [search, setSearch] = useState('')
@@ -193,7 +195,7 @@ export default function TiendaPage() {
                         }}
                           onMouseEnter={e => (e.currentTarget.style.background = '#FF6B9D')}
                           onMouseLeave={e => (e.currentTarget.style.background = '#1A1A1A')}
-                          onClick={ev => ev.preventDefault()}
+                          onClick={ev => { ev.preventDefault(); addItem(product) }}
                         >
                           <ShoppingBag size={13} strokeWidth={2} />
                           Agregar

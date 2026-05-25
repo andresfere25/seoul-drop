@@ -8,10 +8,12 @@ import Footer from '@/components/Footer'
 import PromoBar from '@/components/PromoBar'
 import { getProductBySlug, getRelatedProducts, formatCOP, CATEGORIES, PRODUCTS } from '@/lib/data'
 import { getProductImage } from '@/lib/images'
+import { useCart } from '@/lib/cart'
 import SmartImage from '@/components/SmartImage'
 
 export default function ProductoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
+  const { addItem } = useCart()
   const product = getProductBySlug(slug)
   if (!product) notFound()
 
@@ -153,6 +155,7 @@ export default function ProductoPage({ params }: { params: Promise<{ slug: strin
                 }}
                   onMouseEnter={e => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.transform = 'translateY(-1px)' }}
                   onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
+                  onClick={() => addItem(product)}
                 >
                   <ShoppingBag size={18} strokeWidth={2} />
                   Agregar al carrito

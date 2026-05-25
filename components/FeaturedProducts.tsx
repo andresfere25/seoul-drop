@@ -3,11 +3,13 @@ import Link from 'next/link'
 import { ShoppingBag, Star, ArrowRight } from 'lucide-react'
 import { getFeaturedProducts, formatCOP } from '@/lib/data'
 import { getProductImage } from '@/lib/images'
+import { useCart } from '@/lib/cart'
 import SmartImage from './SmartImage'
 
 const PRODUCTS = getFeaturedProducts()
 
 export default function FeaturedProducts() {
+  const { addItem } = useCart()
   return (
     <section style={{ padding: 'clamp(3rem,6vw,5rem) 1.5rem', background: 'white' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -141,7 +143,7 @@ export default function FeaturedProducts() {
                       }}
                         onMouseEnter={e => (e.currentTarget.style.background = '#FF6B9D')}
                         onMouseLeave={e => (e.currentTarget.style.background = '#1A1A1A')}
-                        onClick={ev => ev.preventDefault()}
+                        onClick={ev => { ev.preventDefault(); addItem(product) }}
                       >
                         <ShoppingBag size={13} strokeWidth={2} />
                         Agregar
