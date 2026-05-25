@@ -10,8 +10,12 @@ import WhySeoulDrop from '@/components/WhySeoulDrop'
 import Testimonials from '@/components/Testimonials'
 import Newsletter from '@/components/Newsletter'
 import Footer from '@/components/Footer'
+import { getFeatured } from '@/lib/products'
 
-export default function HomePage() {
+export const dynamic = 'force-dynamic'
+
+export default async function HomePage() {
+  const featured = await getFeatured()
   return (
     <>
       <PromoBar />
@@ -21,7 +25,7 @@ export default function HomePage() {
         <BrandMarquee />
         <LifestyleCarousel />
         <CategoryGrid />
-        <FeaturedProducts />
+        <FeaturedProducts products={featured} />
         <StorySection />
         <WhySeoulDrop />
         <Testimonials />

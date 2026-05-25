@@ -19,6 +19,7 @@ export type Product = {
   gradient: string
   featured: boolean
   new: boolean
+  image?: string
 }
 
 export const CATEGORIES = [

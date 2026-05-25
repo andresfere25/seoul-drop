@@ -1,10 +1,10 @@
 'use client'
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react'
-import { PRODUCTS, type Product } from './data'
+import { type Product } from './data'
 
 export type CartItem = { product: Product; qty: number }
 
-type Stored = { id: string; qty: number }
+type Stored = CartItem
 
 const STORAGE_KEY = 'seoul-drop-cart-v1'
 export const FREE_SHIPPING_THRESHOLD = 150000
@@ -38,12 +38,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       const raw = localStorage.getItem(STORAGE_KEY)
       if (raw) {
         const stored: Stored[] = JSON.parse(raw)
-        const restored = stored
-          .map(s => {
-            const product = PRODUCTS.find(p => p.id === s.id)
-            return product ? { product, qty: s.qty } : null
-          })
-          .filter((x): x is CartItem => x !== null)
+        const restored = stored.filter(s => s && s.product && s.qty > 0)
         setItems(restored)
       }
     } catch {
@@ -55,8 +50,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   // Guardar en localStorage cuando cambie
   useEffect(() => {
     if (!hydrated) return
-    const toStore: Stored[] = items.map(i => ({ id: i.product.id, qty: i.qty }))
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore))
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
   }, [items, hydrated])
 
   const addItem = useCallback((product: Product, qty = 1) => {

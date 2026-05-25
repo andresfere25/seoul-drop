@@ -1,15 +1,14 @@
 'use client'
 import Link from 'next/link'
 import { ShoppingBag, Star, ArrowRight } from 'lucide-react'
-import { getFeaturedProducts, formatCOP } from '@/lib/data'
+import { formatCOP, type Product } from '@/lib/data'
 import { getProductImage } from '@/lib/images'
 import { useCart } from '@/lib/cart'
 import SmartImage from './SmartImage'
 
-const PRODUCTS = getFeaturedProducts()
-
-export default function FeaturedProducts() {
+export default function FeaturedProducts({ products }: { products: Product[] }) {
   const { addItem } = useCart()
+  const PRODUCTS = products
   return (
     <section style={{ padding: 'clamp(3rem,6vw,5rem) 1.5rem', background: 'white' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -78,7 +77,7 @@ export default function FeaturedProducts() {
                     <span style={{ fontSize: '12px', fontWeight: 700, color: 'rgba(0,0,0,0.2)', letterSpacing: '1px', textTransform: 'uppercase' }}>
                       {product.brand}
                     </span>
-                    <SmartImage src={getProductImage(product.category, idx)} alt={product.name} />
+                    <SmartImage src={product.image || getProductImage(product.category, idx)} alt={product.name} />
                     {product.badges[0] && (
                       <span style={{
                         position: 'absolute', top: '14px', left: '14px',
