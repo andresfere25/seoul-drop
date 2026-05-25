@@ -46,3 +46,7 @@ skills-lock.json
 
 # dev logs
 dev-server.log
+
+# documentos de negocio privados (playbook, legal, branding, estrategia)
+# se mantienen locales, NO se suben al GitHub público
+docs/
