@@ -146,5 +146,26 @@ docs/                           PRIVADO (gitignored): investigación, legal, bra
 ## 10. Bitácora de sesiones
 
 - **2026-05-25** — Sesión fundacional. Construido: web completa + imágenes/carrusel, carrito, Supabase + admin, páginas de contenido, consolidación del repo, investigación de mercado (v1.1) y este CONTEXTO.md. Repo de skills de diseño creado aparte.
+- **2026-06-29** — Retoma. Feedback del hermano procesado: pivote estratégico (arrancar con **USD ~2.000**, foco **MEDIHEAL mascarillas + álbumes K-Pop**, tech a fase 2). Sociedad definida: **3 socios al 33,33%** (Andrés, María, hermano). Decisión de **renombrar la marca** (descartado "K-Drop" → ya existe K.Drop en Canadá + suena a dropshipping). Candidatos en evaluación (ver §11). Entregado: mensaje para el hermano + paso a paso legal SAS. Creado `docs/HANDOFF.md` (contexto completo para traspaso a otra IA). **Pendiente: que el hermano elija el nombre.**
 
 > **Para Claude:** al terminar cada sesión, añade una línea aquí con la fecha y lo que se hizo, y actualiza las secciones 6/7 (hecho/pendiente) si cambian.
+
+---
+
+## 11. Renombramiento de marca (EN CURSO — decisión pendiente)
+
+- **"Seoul Drop" se va a cambiar.** Razón: el hermano quiere una "K" representativa; "K-Drop" se descartó (existe **K.Drop** en Canadá, mismo rubro, + "drop" suena a dropshipping barato).
+- **Candidatos en evaluación** (esperando voto del hermano y su contacto experta en K-Pop):
+  Chingu K-Market (친구=amigo), Bora Market (보라/borahae, BTS), Seoul Station, Annyeong Store (안녕=hola), Haru Market (하루=día), Gureum (구름=nube), K-Town.
+  - Favoritos de Claude: **Chingu K-Market** y **Bora Market**.
+- **Cuando se decida:** actualizar Navbar, Footer, PromoBar, metadata (layout.tsx), logo "SD", textos, estudio de mercado, y evaluar dominio + repo/Vercel.
+
+## 12. Plan de negocio actualizado (2026-06-29)
+
+- **Inversión inicial:** **USD ~2.000** (≈ $8M COP), no los $30M. Primer lote conservador para validar.
+- **Foco del primer lote:** 2 categorías sin barreras complejas:
+  - **Mascarillas MEDIHEAL** (marca #1 skincare accesible KR). Pack 30 uds (10 Double Calming + 10 Hyalu Moist + 10 Pepta Lifting) = 22.096 KRW ≈ **$1.647 COP/unidad** mayorista. Vendiendo a $6–8k = **margen 70–80%**. El hermano tiene la **fórmula INCI completa** (foto) → sirve para la NSO. Se compra al por mayor.
+  - **Álbumes K-Pop** de temporada. Solo B2C/unidad (no hay mayorista). Costo 7.000–15.000 KRW ≈ $22.000–48.000 COP. El hermano coordina con experta en K-Pop.
+  - **Tech:** interesa pero a fase 2 (homologación CRC + márgenes bajos).
+- **Sociedad:** SAS, **3 socios 33,33% c/u** (Andrés, María, hermano). El hermano en Seúl debe firmar vía **poder apostillado en Corea** o autenticación en consulado.
+- **Empresa primero, luego compra** (el hermano envía a nombre de la empresa).
