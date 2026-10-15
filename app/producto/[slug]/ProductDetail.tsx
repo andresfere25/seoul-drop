@@ -63,7 +63,7 @@ export default function ProductDetail({ product, related }: { product: Product; 
                     -{discount}%
                   </span>
                 )}
-                {product.stock <= 5 && (
+                {!product.isReference && product.stock > 0 && product.stock <= 5 && (
                   <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)', background: 'rgba(0,0,0,0.7)', color: 'white', padding: '8px 20px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, whiteSpace: 'nowrap' }}>
                     ⚡ Solo quedan {product.stock} unidades
                   </div>

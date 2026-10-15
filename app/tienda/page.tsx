@@ -4,11 +4,12 @@ import TiendaClient from './TiendaClient'
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: 'Tienda — Seoul Drop',
-  description: 'Catálogo completo de productos coreanos: K-Beauty, K-Pop, Stationery, Snacks y Tech.',
+  title: 'Tienda — Kaya',
+  description: 'Seleccion de referencia de skincare y K-pop de Kaya.',
 }
 
-export default async function TiendaPage() {
+export default async function TiendaPage({ searchParams }: { searchParams: Promise<{ cat?: string }> }) {
   const products = await getCatalog()
-  return <TiendaClient products={products} />
+  const { cat } = await searchParams
+  return <TiendaClient products={products} initialCategory={cat} />
 }

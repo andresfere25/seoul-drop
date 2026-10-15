@@ -6,7 +6,7 @@ export type CartItem = { product: Product; qty: number }
 
 type Stored = CartItem
 
-const STORAGE_KEY = 'seoul-drop-cart-v1'
+const STORAGE_KEY = 'kaya-cart-v1'
 export const FREE_SHIPPING_THRESHOLD = 150000
 export const SHIPPING_COST = 15000
 
@@ -59,11 +59,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (existing) {
         return prev.map(i =>
           i.product.id === product.id
-            ? { ...i, qty: Math.min(i.qty + qty, product.stock) }
+            ? { ...i, qty: Math.min(i.qty + qty, product.isReference ? 10 : product.stock) }
             : i
         )
       }
-      return [...prev, { product, qty: Math.min(qty, product.stock) }]
+      if (!product.isReference && product.stock <= 0) return prev
+      return [...prev, { product, qty: Math.min(qty, product.isReference ? 10 : product.stock) }]
     })
     setIsOpen(true)
   }, [])
@@ -76,7 +77,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setItems(prev =>
       prev.flatMap(i => {
         if (i.product.id !== id) return [i]
-        const next = Math.max(0, Math.min(qty, i.product.stock))
+        const next = Math.max(0, Math.min(qty, i.product.isReference ? 10 : i.product.stock))
         return next === 0 ? [] : [{ ...i, qty: next }]
       })
     )

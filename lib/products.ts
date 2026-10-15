@@ -65,6 +65,15 @@ function mapRow(r: Row): Product {
 
 /** Devuelve todo el catálogo. Supabase si está disponible, si no, estático. */
 export async function getCatalog(): Promise<Product[]> {
+  if (process.env.KAYA_CATALOG_MODE !== 'live') {
+    const selection = new Set(['1', '3', '4', '10', '11', '15'])
+    return STATIC_PRODUCTS.filter(p => selection.has(p.id)).map(p => ({
+      ...p, isReference: true, rating: 0, reviews: 0, originalPrice: undefined,
+      badges: ['Referencia'], stock: 0, featured: true,
+      description: 'Referencia de la seleccion Kaya. Precio orientativo y disponibilidad por confirmar.',
+      fullDescription: 'Producto en evaluacion para el catalogo Kaya. La presentacion, los ingredientes, la autenticidad, el cumplimiento sanitario, el precio final y la disponibilidad se confirmaran antes de su comercializacion.',
+    }))
+  }
   const supabase = getClient()
   if (!supabase) return STATIC_PRODUCTS
   try {

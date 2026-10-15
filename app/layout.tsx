@@ -10,11 +10,11 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Seoul Drop — Productos coreanos auténticos en Colombia",
-  description: "K-Beauty, K-Pop, Stationery y Snacks directamente desde Seúl. Envíos a todo Colombia.",
-  keywords: "kbeauty colombia, kpop colombia, cosméticos coreanos, seoul drop",
+  title: "Kaya | Skincare, K-pop y cultura coreana",
+  description: "Una selección de skincare, K-pop y cultura coreana para Colombia. Conoce el primer capítulo de Kaya.",
+  keywords: "kbeauty colombia, kpop colombia, cosmeticos coreanos, Kaya",
   openGraph: {
-    title: "Seoul Drop",
+    title: "Kaya",
     description: "Lo mejor de Corea, llegando a Colombia 🇰🇷",
     type: "website",
   },

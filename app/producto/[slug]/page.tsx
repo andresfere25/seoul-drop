@@ -5,9 +5,9 @@ import ProductDetail from './ProductDetail'
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const product = await getBySlug(slug)
-  if (!product) return { title: 'Producto no encontrado — Seoul Drop' }
+  if (!product) return { title: 'Producto no encontrado — Kaya' }
   return {
-    title: `${product.name} — Seoul Drop`,
+    title: `${product.name} — Kaya`,
     description: product.description,
   }
 }

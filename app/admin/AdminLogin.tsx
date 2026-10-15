@@ -32,15 +32,15 @@ export default function AdminLogin({ supabase }: { supabase: SupabaseClient }) {
       <div style={{ background: 'white', borderRadius: '24px', padding: 'clamp(2rem,5vw,2.75rem)', maxWidth: '420px', width: '100%', boxShadow: '0 20px 60px rgba(26,26,26,0.12)' }}>
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.75rem' }}>
-          <div style={{ width: 40, height: 40, background: 'linear-gradient(135deg,#FF6B9D,#E85A8C)', borderRadius: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '14px', color: 'white' }}>SD</div>
+          <div style={{ width: 40, height: 40, background: 'linear-gradient(135deg,#FF6B9D,#E85A8C)', borderRadius: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '14px', color: 'white' }}>K</div>
           <div>
-            <p style={{ fontWeight: 800, fontSize: '17px', color: '#1A1A1A', lineHeight: 1 }}>Seoul Drop</p>
+            <p style={{ fontWeight: 800, fontSize: '17px', color: '#1A1A1A', lineHeight: 1 }}>Kaya</p>
             <p style={{ fontSize: '12px', color: '#999' }}>Panel de administración</p>
           </div>
         </div>
 
         <h1 style={{ fontSize: '22px', fontWeight: 900, color: '#1A1A1A', letterSpacing: '-0.5px', marginBottom: '6px' }}>Inicia sesión</h1>
-        <p style={{ fontSize: '14px', color: '#888', marginBottom: '1.75rem' }}>Acceso solo para el equipo de Seoul Drop.</p>
+        <p style={{ fontSize: '14px', color: '#888', marginBottom: '1.75rem' }}>Acceso solo para el equipo de Kaya.</p>
 
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ position: 'relative' }}>

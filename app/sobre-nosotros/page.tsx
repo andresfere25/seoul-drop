@@ -5,8 +5,8 @@ import SmartImage from '@/components/SmartImage'
 import { img, IMG } from '@/lib/images'
 
 export const metadata = {
-  title: 'Sobre Nosotros — Seoul Drop',
-  description: 'La historia de Seoul Drop: dos hermanos conectando Corea y Colombia.',
+  title: 'Sobre Nosotros — Kaya',
+  description: 'La historia de Kaya: dos hermanos conectando Corea y Colombia.',
 }
 
 const VALUES = [
@@ -22,7 +22,7 @@ export default function SobreNosotrosPage() {
       <PageHeader
         eyebrow="Nuestra historia"
         title="Dos hermanos, un océano y el amor por Corea"
-        subtitle="Seoul Drop nació de una idea simple: acercar lo mejor de Corea a Colombia, sin réplicas y sin intermediarios."
+        subtitle="Kaya nació de una idea simple: acercar lo mejor de Corea a Colombia, sin réplicas y sin intermediarios."
       />
 
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: 'clamp(2.5rem,5vw,4rem) 1.5rem' }}>
@@ -40,7 +40,7 @@ export default function SobreNosotrosPage() {
               Lo que era un favor entre amigos se volvió una misión: <strong>traer Corea a Colombia con productos 100% auténticos</strong>, comprados en persona en las tiendas oficiales de Seúl como Olive Young, Artbox y Synnara.
             </p>
             <p style={{ fontSize: '15px', color: '#555', lineHeight: 1.75 }}>
-              Hoy Seoul Drop es ese puente. No vendemos productos: vendemos la experiencia de tener un pedacito de Seúl en tu casa.
+              Hoy Kaya es ese puente. No vendemos productos: vendemos la experiencia de tener un pedacito de Seúl en tu casa.
             </p>
           </div>
           <div style={{ position: 'relative', height: '360px', borderRadius: '24px', overflow: 'hidden', background: 'linear-gradient(135deg,#FFE4F0,#FFCCE4)', boxShadow: '0 20px 50px rgba(26,26,26,0.14)' }}>

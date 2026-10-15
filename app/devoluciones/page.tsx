@@ -2,8 +2,8 @@ import { ShieldCheck, RefreshCw, AlertCircle, CheckCircle2, XCircle } from 'luci
 import SiteLayout, { PageHeader } from '@/components/SiteLayout'
 
 export const metadata = {
-  title: 'Devoluciones y garantía — Seoul Drop',
-  description: 'Política de devoluciones y garantía de originalidad de Seoul Drop.',
+  title: 'Devoluciones y garantía — Kaya',
+  description: 'Política de devoluciones y garantía de originalidad de Kaya.',
 }
 
 const ACCEPT = [

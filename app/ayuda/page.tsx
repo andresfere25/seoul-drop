@@ -4,8 +4,8 @@ import SiteLayout, { PageHeader } from '@/components/SiteLayout'
 import FaqAccordion, { type Faq } from '@/components/FaqAccordion'
 
 export const metadata = {
-  title: 'Cómo comprar y preguntas frecuentes — Seoul Drop',
-  description: 'Aprende a comprar en Seoul Drop y resuelve tus dudas.',
+  title: 'Cómo comprar y preguntas frecuentes — Kaya',
+  description: 'Aprende a comprar en Kaya y resuelve tus dudas.',
 }
 
 const STEPS = [
@@ -30,7 +30,7 @@ export default function AyudaPage() {
     <SiteLayout>
       <PageHeader
         eyebrow="Centro de ayuda"
-        title="Cómo comprar en Seoul Drop"
+        title="Cómo comprar en Kaya"
         subtitle="Comprar productos coreanos auténticos nunca fue tan fácil. Te explicamos paso a paso."
       />
 

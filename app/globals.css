@@ -1,5 +1,53 @@
 @import "tailwindcss";
 
+.kaya-announcement{background:#b8e6d9;color:#183c31;padding:10px 24px;display:flex;justify-content:space-between;font-size:11px;font-weight:650;gap:12px}
+.kaya-footer{padding:48px 32px 22px;background:#f6f8f5;color:#263c32;display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:35px;border-top:1px solid #d4dfd6}.kaya-footer-logo{font-size:36px;font-weight:650;color:inherit;text-decoration:none}.kaya-footer p{font-size:13px;line-height:1.7;margin-top:8px}.kaya-footer nav{display:flex;flex-direction:column;gap:15px;padding-top:12px}.kaya-footer nav a{display:flex;align-items:center;gap:8px;font-size:13px;color:inherit;text-decoration:none}.kaya-footer-bottom{grid-column:1/-1;display:flex;justify-content:space-between;gap:20px;font-size:11px;border-top:1px solid #d4dfd6;padding-top:20px}
+@media(max-width:760px){.kaya-footer{grid-template-columns:1fr;padding:35px 20px;gap:18px}.kaya-footer-bottom{flex-direction:column}}
+.kaya-hero{position:relative;min-height:540px;height:calc(83svh - 100px);max-height:760px;background:#343e38;color:#fff9f8;overflow:hidden}
+.kaya-hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%}
+.kaya-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,28,24,.68),rgba(12,28,24,.1))}
+.kaya-hero-content{position:relative;max-width:1250px;margin:auto;padding:65px 32px;z-index:1}
+.kaya-eyebrow{font-size:11px;font-weight:650;margin-bottom:20px;letter-spacing:0}
+.kaya-hero h1{font-size:112px;font-weight:650;line-height:1;margin-bottom:22px;letter-spacing:0}
+.kaya-hero h1 span{color:#ff6b9d}
+.kaya-hero-subtitle{font-size:28px;line-height:1.35;margin-bottom:30px;max-width:440px}
+.kaya-button{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:13px 24px;background:#ff6b9d;color:#271b21;text-decoration:none;font-weight:650;font-size:14px;border-radius:3px;transition:transform 180ms ease-out}
+.kaya-button:hover{transform:translateY(-2px)}
+.kaya-button:active{transform:scale(.98)}
+.kaya-hero-caption{position:absolute;bottom:24px;left:32px;right:32px;display:flex;justify-content:space-between;font-size:11px}
+.kaya-section{padding:68px 32px;max-width:1250px;margin:auto}
+.kaya-section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:28px}
+.kaya-section-heading h2{font-size:34px;line-height:1.15;font-weight:600;letter-spacing:0}
+.kaya-section-heading p{color:#4e5753;font-size:14px;line-height:1.6}
+.kaya-section-heading .kaya-eyebrow{font-size:11px;color:#63505b;margin-bottom:10px}
+.kaya-section-heading a{display:flex;gap:9px;align-items:center;font-size:13px;text-decoration:none;color:#25372e}
+.kaya-collections{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.kaya-collection{text-decoration:none;color:#202a25;min-width:0}
+.kaya-collection-photo{position:relative;aspect-ratio:1.2;background:#e3ebe6;overflow:hidden}
+.kaya-collection-photo img{width:100%;height:100%;object-fit:cover;transition:transform 400ms ease-out}
+.kaya-collection:hover img{transform:scale(1.025)}
+.kaya-collection-photo span{position:absolute;top:14px;left:14px;font-size:11px;background:#f8fbf8;padding:6px 10px}
+.kaya-collection-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:15px}
+.kaya-collection h3{font-size:22px;font-weight:550;letter-spacing:0}
+.kaya-collection p{font-size:13px;color:#536159;margin-top:6px}
+.kaya-edit{border-top:1px solid #dbe2dd}
+.kaya-reference-note{font-size:12px;color:#59635e;margin-bottom:24px}
+.kaya-products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.kaya-product{min-width:0}
+.kaya-product-art{display:flex;align-items:center;justify-content:center;aspect-ratio:4/5;position:relative;overflow:hidden;text-decoration:none;color:#24362e}
+.kaya-product-art img{width:100%;height:100%;object-fit:contain}
+.kaya-product-type{display:flex;flex-direction:column;align-items:center;padding:20px;text-align:center;gap:20px;max-width:100%}
+.kaya-product-type span{font-size:11px}.kaya-product-type strong{font-size:26px;font-weight:500;overflow-wrap:anywhere}.kaya-product-type small{font-size:9px}
+.kaya-reference-label{position:absolute;top:12px;left:12px;font-size:10px;background:#f9fbf8;padding:5px 8px}
+.kaya-product-meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:11px;font-weight:650}
+.kaya-product-meta button{width:44px;height:44px;display:grid;place-items:center;background:transparent;border:1px solid #d8dfd8;border-radius:3px;cursor:pointer}
+.kaya-product-name{font-size:14px;line-height:1.5;display:block;color:#25372e;text-decoration:none;min-height:42px;margin:3px 0 8px}
+.kaya-product>p{font-size:13px}.kaya-story{padding:65px 32px;background:#e1eee7;text-align:center;color:#203a2e}
+.kaya-story h2{font-size:38px;font-weight:550;line-height:1.25;letter-spacing:0}.kaya-story>p:not(.kaya-eyebrow){max-width:540px;margin:22px auto;line-height:1.7;font-size:15px}
+:focus-visible{outline:3px solid #247c66;outline-offset:4px}
+@media(max-width:760px){.kaya-announcement{font-size:10px;justify-content:center;text-align:center;flex-wrap:wrap;gap:3px}.kaya-announcement span{width:100%}.kaya-hero{min-height:490px;height:70svh}.kaya-hero-content{padding:58px 22px}.kaya-hero h1{font-size:84px}.kaya-hero-subtitle{font-size:23px}.kaya-hero-caption{left:22px;right:22px;gap:14px;flex-wrap:wrap}.kaya-section{padding:42px 20px}.kaya-section-heading{align-items:flex-start;flex-direction:column;gap:12px}.kaya-section-heading h2{font-size:28px}.kaya-collections{grid-template-columns:1fr;gap:28px}.kaya-collection-photo{aspect-ratio:1.5}.kaya-products{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}.kaya-product-type{padding:10px}.kaya-product-type strong{font-size:21px}.kaya-story h2{font-size:29px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
 :root {
   /* ── Paleta oficial Seoul Drop (del mockup) ── */
   --black:       #1A1A1A;

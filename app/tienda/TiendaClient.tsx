@@ -18,9 +18,9 @@ const SORT_OPTIONS = [
   { value: 'new', label: 'Nuevos primero' },
 ]
 
-export default function TiendaClient({ products }: { products: Product[] }) {
+export default function TiendaClient({ products, initialCategory }: { products: Product[]; initialCategory?: string }) {
   const { addItem } = useCart()
-  const [activeCategory, setActiveCategory] = useState<Category | 'all'>('all')
+  const [activeCategory, setActiveCategory] = useState<Category | 'all'>(CATEGORIES.some(c => c.slug === initialCategory) ? initialCategory as Category : 'all')
   const [sort, setSort] = useState('relevance')
   const [search, setSearch] = useState('')
 
@@ -58,7 +58,7 @@ export default function TiendaClient({ products }: { products: Product[] }) {
               Catálogo completo
             </p>
             <h1 style={{ fontSize: 'clamp(2rem,5vw,3.2rem)', fontWeight: 900, color: 'white', letterSpacing: '-2px', lineHeight: 1.05, marginBottom: '8px' }}>
-              Tienda Seoul Drop
+              Tienda Kaya
             </h1>
             <p style={{ color: '#888', fontSize: '15px' }}>
               {products.length} productos importados directamente desde Seúl

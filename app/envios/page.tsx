@@ -2,8 +2,8 @@ import { Truck, Clock, MapPin, PackageCheck, Plane } from 'lucide-react'
 import SiteLayout, { PageHeader } from '@/components/SiteLayout'
 
 export const metadata = {
-  title: 'Envíos y tiempos de entrega — Seoul Drop',
-  description: 'Información de envíos de Seoul Drop a todo Colombia.',
+  title: 'Envíos y tiempos de entrega — Kaya',
+  description: 'Información de envíos de Kaya a todo Colombia.',
 }
 
 const CARDS = [

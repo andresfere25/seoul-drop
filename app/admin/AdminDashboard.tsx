@@ -116,9 +116,9 @@ export default function AdminDashboard({ supabase, email }: { supabase: Supabase
       {/* Topbar */}
       <header style={{ background: 'white', borderBottom: '1.5px solid #F0ECE4', padding: '0.9rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ width: 34, height: 34, background: 'linear-gradient(135deg,#FF6B9D,#E85A8C)', borderRadius: '9px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '12px', color: 'white' }}>SD</div>
+          <div style={{ width: 34, height: 34, background: 'linear-gradient(135deg,#FF6B9D,#E85A8C)', borderRadius: '9px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '12px', color: 'white' }}>K</div>
           <div>
-            <p style={{ fontWeight: 800, fontSize: '15px', color: '#1A1A1A', lineHeight: 1 }}>Panel Seoul Drop</p>
+            <p style={{ fontWeight: 800, fontSize: '15px', color: '#1A1A1A', lineHeight: 1 }}>Panel Kaya</p>
             <p style={{ fontSize: '11px', color: '#999' }}>{email}</p>
           </div>
         </div>

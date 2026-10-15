@@ -35,7 +35,7 @@ const REVIEWS = [
     color: '#F39C12',
     product: 'Artbox Washi Tape Set',
     rating: 5,
-    text: 'Soy bullet journalist y los washi tapes de Artbox no los consigo en ningún almacén de Colombia. Con Seoul Drop llegaron exactamente como los de las fotos. Ya tengo mi colección completa.',
+    text: 'Soy bullet journalist y los washi tapes de Artbox no los consigo en ningún almacén de Colombia. Con Kaya llegaron exactamente como los de las fotos. Ya tengo mi colección completa.',
   },
   {
     name: 'Mariana Ospina',
@@ -44,7 +44,7 @@ const REVIEWS = [
     color: '#2ECC71',
     product: 'Beauty of Joseon Serum',
     rating: 5,
-    text: 'El sérum de Beauty of Joseon me lo recomendó una dermatóloga. Pensé que iba a ser difícil conseguirlo en Colombia pero Seoul Drop lo tiene. Llegó rápido y original. Mi piel está cambiada.',
+    text: 'El sérum de Beauty of Joseon me lo recomendó una dermatóloga. Pensé que iba a ser difícil conseguirlo en Colombia pero Kaya lo tiene. Llegó rápido y original. Mi piel está cambiada.',
   },
   {
     name: 'Camila Jiménez',
@@ -53,7 +53,7 @@ const REVIEWS = [
     color: '#E74C3C',
     product: 'NewJeans Get Up Album',
     rating: 5,
-    text: 'Pensé que nunca iba a conseguir el álbum Bunny Beach Bag de NewJeans en Colombia. Seoul Drop lo importó directo. Llegó con la bolsa, la photocard de Hanni y todo. Increíble.',
+    text: 'Pensé que nunca iba a conseguir el álbum Bunny Beach Bag de NewJeans en Colombia. Kaya lo importó directo. Llegó con la bolsa, la photocard de Hanni y todo. Increíble.',
   },
 ]
 

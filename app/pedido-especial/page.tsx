@@ -14,8 +14,8 @@ export default function PedidoEspecialPage() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault()
-    const msg = `¡Hola Seoul Drop! 🇰🇷 Quiero un *pedido especial*:\n\n👤 Nombre: ${form.nombre}\n🎁 Producto: ${form.producto}\n📝 Detalles: ${form.detalles || '—'}\n📱 Contacto: ${form.contacto}`
-    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank')
+    const msg = `¡Hola Kaya! 🇰🇷 Quiero un *pedido especial*:\n\n👤 Nombre: ${form.nombre}\n🎁 Producto: ${form.producto}\n📝 Detalles: ${form.detalles || '—'}\n📱 Contacto: ${form.contacto}`
+    window.open(`https://wa.me/573209464352?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   const input: React.CSSProperties = {

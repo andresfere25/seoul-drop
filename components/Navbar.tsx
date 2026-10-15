@@ -8,8 +8,8 @@ const NAV_LINKS = [
   { href: '/tienda', label: 'Tienda' },
   { href: '/tienda?cat=kbeauty', label: 'K-Beauty' },
   { href: '/tienda?cat=kpop', label: 'K-Pop' },
+  { href: '/pedido-especial', label: 'K-Dramas' },
   { href: '/sobre-nosotros', label: 'Nosotros' },
-  { href: '/pedido-especial', label: 'Pedido especial' },
 ]
 
 export default function Navbar() {
@@ -45,9 +45,9 @@ export default function Navbar() {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontWeight: 900, fontSize: '13px', color: 'white', letterSpacing: '-0.5px',
             boxShadow: '0 2px 8px rgba(255,107,157,0.35)',
-          }}>SD</div>
+          }}>K</div>
           <span style={{ fontWeight: 800, fontSize: '18px', color: '#1A1A1A', letterSpacing: '-0.5px' }}>
-            Seoul Drop
+            Kaya
           </span>
         </Link>
 

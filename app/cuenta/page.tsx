@@ -3,8 +3,8 @@ import { User, Package, Heart, Bell, ArrowRight } from 'lucide-react'
 import SiteLayout, { PageHeader } from '@/components/SiteLayout'
 
 export const metadata = {
-  title: 'Mi cuenta — Seoul Drop',
-  description: 'Tu cuenta de Seoul Drop.',
+  title: 'Mi cuenta — Kaya',
+  description: 'Tu cuenta de Kaya.',
 }
 
 const FEATURES = [
@@ -16,7 +16,7 @@ const FEATURES = [
 export default function CuentaPage() {
   return (
     <SiteLayout>
-      <PageHeader eyebrow="Mi cuenta" title="Tu espacio en Seoul Drop" />
+      <PageHeader eyebrow="Mi cuenta" title="Tu espacio en Kaya" />
       <div style={{ maxWidth: '700px', margin: '0 auto', padding: 'clamp(2.5rem,5vw,4rem) 1.5rem', textAlign: 'center' }}>
         <div style={{ width: 84, height: 84, borderRadius: '50%', background: 'linear-gradient(135deg,#FFE4F0,#FFCCE4)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
           <User size={38} color="#FF6B9D" strokeWidth={1.6} />

@@ -1,6 +1,7 @@
 export type Category = 'kbeauty' | 'kpop' | 'stationery' | 'snacks' | 'tech'
 
 export type Product = {
+  isReference?: boolean
   id: string
   slug: string
   name: string

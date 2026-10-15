@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/client'
 import AdminLogin from './AdminLogin'
 import AdminDashboard from './AdminDashboard'
 
-type State = 'loading' | 'in' | 'out' | 'unconfigured'
+type State = 'loading' | 'in' | 'out' | 'unconfigured' | 'forbidden'
 
 export default function AdminPage() {
   const configured = !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
@@ -14,15 +14,22 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (!supabase) return
-    supabase.auth.getSession().then(({ data }) => {
-      setState(data.session ? 'in' : 'out')
-      setEmail(data.session?.user.email ?? '')
-    })
+    let active = true
+    async function refreshAccess() {
+      const { data, error } = await supabase!.auth.getUser()
+      if (!active) return
+      if (error || !data.user) { setState('out'); return }
+      const { data: allowed, error: accessError } = await supabase!.rpc('is_kaya_admin')
+      if (!active) return
+      setEmail(data.user.email ?? '')
+      setState(!accessError && allowed === true ? 'in' : 'forbidden')
+    }
+    void refreshAccess()
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      setState(session ? 'in' : 'out')
-      setEmail(session?.user.email ?? '')
+      if (!session) setState('out')
+      else { setState('loading'); setTimeout(() => { if (active) void refreshAccess() }, 0) }
     })
-    return () => sub.subscription.unsubscribe()
+    return () => { active = false; sub.subscription.unsubscribe() }
   }, [supabase])
 
   const wrap: React.CSSProperties = {
@@ -46,6 +53,10 @@ export default function AdminPage() {
 
   if (state === 'loading') {
     return <div style={wrap}><p style={{ color: '#888', fontSize: '15px' }}>Cargando panel…</p></div>
+  }
+
+  if (state === 'forbidden') {
+    return <div style={wrap}><div><h1>Acceso no autorizado</h1><p>Tu cuenta no tiene permisos de administracion de Kaya o falta configurar la politica de acceso.</p><button onClick={() => supabase?.auth.signOut()}>Cerrar sesion</button></div></div>
   }
 
   if (state === 'out' || !supabase) {

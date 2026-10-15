@@ -16,8 +16,8 @@ export default function CarritoPage() {
 
   function checkoutWhatsApp() {
     const lines = items.map(i => `• ${i.qty}× ${i.product.name} — ${formatCOP(i.product.price * i.qty)}`).join('\n')
-    const msg = `¡Hola Seoul Drop! 🇰🇷 Quiero hacer este pedido:\n\n${lines}\n\nSubtotal: ${formatCOP(subtotal)}\nEnvío: ${shipping === 0 ? 'Gratis' : formatCOP(shipping)}\n*Total: ${formatCOP(total)}*`
-    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank')
+    const msg = `Hola Kaya. Quiero consultar disponibilidad y cotizacion de estas referencias (no es un pedido confirmado):\n\n${lines}\n\nSubtotal orientativo: ${formatCOP(subtotal)}\nEnvio estimado: ${formatCOP(shipping)}\nTotal orientativo: ${formatCOP(total)}`
+    window.open(`https://wa.me/573209464352?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer')
   }
 
   return (
