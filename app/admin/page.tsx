@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import AdminLogin from './AdminLogin'
 import AdminDashboard from './AdminDashboard'
+import OperationsPanel from '@/components/OperationsPanel'
 
 type State = 'loading' | 'in' | 'out' | 'unconfigured' | 'forbidden'
 
@@ -11,6 +12,7 @@ export default function AdminPage() {
   const supabase = useMemo(() => (configured ? createClient() : null), [configured])
   const [state, setState] = useState<State>(configured ? 'loading' : 'unconfigured')
   const [email, setEmail] = useState<string>('')
+  const [legacy, setLegacy] = useState(false)
 
   useEffect(() => {
     if (!supabase) return
@@ -63,5 +65,5 @@ export default function AdminPage() {
     return <AdminLogin supabase={supabase!} />
   }
 
-  return <AdminDashboard supabase={supabase} email={email} />
+  return <><div style={{ padding: '8px 20px', background: '#e0eae3', display: 'flex', gap: 16, fontSize: 12 }}><button onClick={() => setLegacy(!legacy)}>{legacy ? 'Ir a operaciones' : 'Catalogo anterior'}</button><button onClick={() => supabase.auth.signOut()}>Cerrar sesion</button></div>{legacy ? <AdminDashboard supabase={supabase} email={email} /> : <OperationsPanel supabase={supabase} email={email} />}</>
 }

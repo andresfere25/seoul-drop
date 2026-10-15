@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict'
+import { demoOperations, submitDemo, resolveDemo, validateOperation, type OpsState } from '../lib/operations'
+
+let state: OpsState = demoOperations()
+const save = { id: crypto.randomUUID(), sku: 'KAY-SK-0003', name: 'Prueba', brand: 'Marca', category: 'skincare', variant: '50 ml', price: 40000, cost: 20000, status: 'draft', version: 0 }
+state = submitDemo(state, 'sku_save', save)
+assert.equal(state.skus.length, 2, 'Submitting must not mutate catalogue')
+state = resolveDemo(state, state.requests[0].id, true)
+assert.equal(state.skus.length, 3)
+assert.equal(state.events.length, 1)
+assert.throws(() => resolveDemo(state, state.requests[0].id, true), /resuelta/)
+assert.throws(() => validateOperation('sku_save', { ...save, id: 'other' }, state), /existe/)
+assert.throws(() => validateOperation('sku_save', { ...save, sku: 'BAD' }, state), /Formato/)
+assert.throws(() => validateOperation('stock_move', { sku_id: save.id, quantity: -1, reason: 'Salida' }, state), /supera/)
+assert.throws(() => validateOperation('stock_move', { sku_id: save.id, quantity: 1, reason: 'Entrada' }, state), /lote/)
+state = submitDemo(state, 'stock_move', { sku_id: save.id, quantity: 5, reason: 'Entrada', batch_code: 'L-1', expires_on: '2090-01-01' })
+state = resolveDemo(state, state.requests[0].id, true)
+assert.equal(state.skus.find(s => s.id === save.id)?.on_hand, 5)
+assert.throws(() => validateOperation('sku_save', { ...save, version: 1 }, state), /cambio/)
+const promotion = { sku_id: save.id, name: 'Promo', percent: 10, starts_at: '2090-01-01T00:00:00Z', ends_at: '2090-01-05T00:00:00Z' }
+assert.throws(() => validateOperation('promo_create', { ...promotion, percent: 50 }, state), /superar/)
+assert.throws(() => validateOperation('promo_create', { ...promotion, percent: 70 }, state), /limite/)
+state = submitDemo(state, 'promo_create', promotion)
+state = resolveDemo(state, state.requests[0].id, true)
+assert.equal(state.promotions.length, 1)
+assert.throws(() => validateOperation('promo_create', promotion, state), /cruza/)
+state = submitDemo(state, 'stock_move', { sku_id: save.id, quantity: -2, reason: 'Salida' })
+state = resolveDemo(state, state.requests[0].id, false)
+assert.equal(state.skus.find(s => s.id === save.id)?.on_hand, 5)
+assert.equal(state.requests[0].status, 'rejected')
+assert.equal(Math.round((190000 * 0.0265 + 700) * 1.19), 6825)
+console.log('Operations: 17 assertions passed (approval, duplicates, versions, stock, cosmetics, promotions, rejection, Wompi).')

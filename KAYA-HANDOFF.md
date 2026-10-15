@@ -21,6 +21,17 @@ Existing CRUD supports prices and photos. It does not yet implement explicit
 SKU, variants, batch inventory, scheduled promotions, payment orders or audit.
 Wompi is recommended but NOT integrated. No bank account has been opened.
 
+Operations update: /admin now opens OperationsPanel after the Auth/RPC gate,
+with an option to open the legacy catalogue. /demo-operacion is a public
+isolated demonstration; data lasts only during the visit. Migration 04 adds
+ops_* products, SKUs, suppliers, stock movements, promotions, requests and
+audit. It depends on 03 and is NOT applied to Supabase. Mutations go through
+checked RPCs and approval transactions. Promotions are NOT connected to the
+public checkout. No AI API integration yet; this is NOT a complete live ERP.
+Tests: unit rules, Chrome mobile/desktop, PostgreSQL in-memory with auth and
+storage stubs, anon/customer/admin access checks. Remote permissions and
+multiuser concurrency still require staging verification.
+
 Build: npm run build. For OneDrive locks use environment variable
 KAYA_BUILD_DIR=.next-kaya-review before build/start; do not delete user data.
 Local preview: port 3100. Chrome desktop/mobile tested, cart and query filters.
